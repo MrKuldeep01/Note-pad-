@@ -3,23 +3,31 @@
   padding: 0px;
   box-sizing: border-box;
 }
+/* :root{
+  --textcolor:white;
+
+} */
+
 body {
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
+  transition: all 1s ;
+  
 }
 
-@media (max-width: 250px) {
+/* @media (max-width: 250px) {
   label span {
     display: none;
   }
   label #themeToggle {
     border-radius: 50%;
   }
-}
+} */
 button{
   border: none;
   outline: none;
   box-shadow: -2px -1px 4px black;
   border-radius: 5px;
+  z-index: 5;
 
 }
 button:active{
@@ -35,38 +43,41 @@ a {
 
 /* ----------scroll bar --------------------- */
 ::-webkit-scrollbar {
-  width: 8px;
+  /* width: 8px; */
+  display: none;
 }
 ::-webkit-scrollbar-thumb {
   /* background: linear-gradient(rgba(119, 190, 252, 0.262), rgba(255, 30, 150, 0.238));
    */
-   background: whitesmoke;
-  border-radius: 5px;
+   background: rgb(3, 3, 3);
+  border-radius: 2px;
 }
 ::-webkit-scrollbar-track {
-  background-color: rgba(14, 14, 14, 0.63);
+  background-color: rgba(124, 124, 124, 0.63);
 }
 
 /* .containe{
     height: 100vh;
     width: 100vw;
-    display: flex;
     padding:10px 20px;
+    display: flex;
     align-items: center;
     justify-self: center;
     background:linear-gradient(rgb(62, 61, 61),rgb(176, 176, 176));
 } */
-.box {
+.homepage{
   height: 100vh;
   width: 100%;
   margin: 0px;
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
+  /* overflow-x:hidden; */
+  /* align-items: flex-start; */
+  justify-content: flex-end;
   border: none;
 }
 .lightTheme {
-  background-color: rgb(242, 242, 242);
+  background-color: rgba(192, 192, 192, 0.678);
   color: #2a2929;
 }
 .darkTheme {
@@ -80,6 +91,9 @@ a {
   padding: 4px 8px;
   background-color: rgb(3, 3, 3);
   color: rgb(255, 255, 255);
+  position: fixed;
+  top: 0;
+  left: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -95,20 +109,93 @@ a {
   color: white;
   font-size: 1.5rem;
 }
+.emptybox{
+  padding: 15px;
+  height: auto;
+  width: auto;
+  background: rgba(137, 43, 226, 0.378);
+  border-radius: 10px;
+  border:none;
+  
+  /* position: absolute;
+  top:40%;
+  left: 35%; */
+}
+/* -----------------new create page------------ */
+.textdiv{
+  height:calc(100vh - 40px);
+  width: 100vw;
+  position:fixed;
+  top:0;
+  left: 0;
+  display:none;
+  background: rgb(82, 207, 211,0.2);
+  align-items: center;
+  justify-content: center;
+}
+
+.newpagebtn{
+  position: fixed;
+  bottom: 50px;
+  right:20px;
+}
+.newpagebtn button{
+  margin-left: 10px;
+}
 
 .textArea {
-  width: 100%;
-  height: 98%;
+  width: 95%;
+  height: 80%;
   padding: 10px 20px;
+  padding-top: 40px;  
   margin: 0px;
   word-wrap: break-word;
   border: none;
   font-size: 1.4rem;
-  outline:none;
+  outline:invert;
   font-family: "Courier New", Courier, monospace, system-ui, -apple-system,
     BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
     "Open Sans", "Helvetica Neue", sans-serif;
-  resize: none; /* to make size fix */
+  resize: none; /*to make size fix*/
+}
+
+.itemsArea{
+  font-size: 1.4rem;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;  
+  padding-top: 95px;
+}
+
+.items{
+  width: 80%;
+  height: 100px;
+  padding:10px 20px;
+  margin-bottom:8px;
+  background: rgba(240, 230, 140, 0.541);
+  /* border:2px solid red; */
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.itemname{
+  border-bottom: 2px solid black;
+  padding: 5px;
+  /* border-radius: 0px; */
+}
+.items .right{
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+  justify-content: center;
+  
+}
+.editdeletebtn{
+  margin:1px 10px ;
 }
 
   /*----------------btns-------------------- */
@@ -123,47 +210,67 @@ a {
   gap: 10px;
 }
 
-.saveBtn,.closeBtn,.editBtn{
+.addBtn,.saveBtn,.cancelBtn,.editBtn,.deleteBtn,.refreshBtn{
   font-size:1rem;
   font-weight: 600;
   font-family: monospace;
-  color:white;
+  color:rgba(226, 226, 226);
   padding:5px 10px;
   border-radius: 5px;
   border:none;
-  background: crimson;
+  background: royalblue;
   /* position:relative; */
 }
+.cancelBtn,.addBtn,.deleteBtn,.refreshBtn{
+  font-size: 22px;
+}
 
+#addBtn{
+  position:absolute;
+  bottom: 50px;
+  left:20px;
+}
+.refreshBtn:hover,.refreshBtn:active{
+  scale:1.2;
+  font-size: 1.5rem;
+  
+
+}
 /* -------------------SAVE PAGE----------------------- */
-.savepage{
+/* .savepage{
   height: 100vh;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   background: rgb(255, 255, 255);
-}
+} */
 .savefield{
-  height: 50%;
-  width: 50%;
-  border-radius:6px;
-  background: rgba(209, 209, 209, 0.767);
+  height: 100vh;
+  width: 100vw;
+  border-radius: 6px;
+  background: rgba(63, 63, 63, 0.767);
   font-size: 1.5rem;
-  padding:20px 30px;
+  position: fixed;
+  top:0;
+  left:0; 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 .savefield label{
-  font-size: 1.3rem;
-  color: #2b2b2b;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  margin:5px ;
+      font-size: 1.2rem;
+    color: #2b2b2b;
+    font-family: 'Font Awesome 6 Brands';
+    word-spacing: 5px;
+    margin: 5px;
 } 
 .savefield input {
   font-size: 1.1rem;
+  font-family: fantasy;
+  word-spacing: 5px;
+  letter-spacing: 1px;
   color: #4a4a4a;
   padding: 8px 15px;
   width: 80%;
@@ -177,7 +284,6 @@ a {
   width: 100%;
   justify-content: space-evenly;
 }
-
 .savefield button{
   font-size: 1rem;
   padding:7px 15px;
@@ -186,7 +292,15 @@ a {
   color: white;
   margin-top: 20px;
 }
-
+.alldeletebtn{
+  position:absolute;
+  top:50px;
+  right: 15px;
+  font-size: 1.2rem;
+  padding:5px 10px ;
+  background: royalblue;
+  color:rgba(255, 255, 255);
+}
 
 footer {
   font-size: 1.2rem;
