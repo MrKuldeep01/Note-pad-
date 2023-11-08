@@ -83,7 +83,7 @@ function newPagefun() {
       hideSaveCard();
     }
     submitbtn.addEventListener("click", hideSaveCard);
-    storedItems();
+    
   }
 }
 
