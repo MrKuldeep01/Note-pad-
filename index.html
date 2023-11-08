@@ -12,42 +12,34 @@
 
 <body>
     <!-- <div class="container"> -->
-    <div id="box" class="box">
+    <div id="homepage" class="homepage">
+        <!-- --------------------------nav------------------ -->
         <label for="textArea" class="label"><span>Note-Pad</span>
             <i class="fa-solid fa-pen-nib "></i>
             <button id="themeToggle"><i class="fa-solid fa-circle-half-stroke"></i></button>
         </label>
-        <textarea name="Note-Pad" id="textArea" class="lightTheme textArea" spellcheck="true" autocomplete="language"
-            autocorrect="true"></textarea>
-        <div class="Btn">
-            <button class="saveBtn" id="saveBtn">save</button>
-            <button class="closeBtn" id="closeBtn">close</button>
-            <button class="editBtn" id="editBtn">edit</button>
+        <!-- -----------------------items area---------------------- -->
+
+        <div id="itemsArea" class="lightTheme itemsArea">
+            <!-- <div class="emptybox">
+                <p>Empty.</p>
+                <p>click on add button to add items</p>
+            </div> -->
+            <!-- <div class="items"> <div class="left">
+                    <h3 class="itemname">note-1</h3>
+                </div>
+                <div class="right">
+                    <button class="editBtn editdeletebtn" id="editBtn">🖊</button>
+                    <button class="deleteBtn editdeletebtn" id="deleteBtn">X</button>
+                </div> -->
         </div>
+        <button class="addBtn buttons" id="addBtn">+</button>
+        <button class="refreshBtn buttons" id="refreshBtn" onClick="window.location.reload(true)"><i class="fa-solid fa-rotate fa-spin"></i></button>
+
     </div>
-    <!-- <div class="savepage">
-        <div class="savefield">
-                <label for="userFile">Write file name :</label>
-                <input type="text" id="userFile" placeholder="write name here...">
-           <div class="savepagebtn">
-            <button id="finelsavebtn">SAVE</button>
-            <button id="closesavebtn">CLOSE</button>
-            </div>
-        </div>
-    </div> -->
-    <footer id="me">
-        <span class="insta"><a href="https://instagram.com/kharoliya_01" target="_blank"><i
-                    class="fa-brands fa-instagram"></i></a></span>
-        <span class="github"><a href="https://github.com/MrKuldeep01" target="_blank"><i
-                    class="fa-brands fa-github"></i></a></span>
-        <p>Mr. Kumar</p>
-        <span class="email"><a
-                href="https://mail.google.com/mail/u/0/#inbox?compose=XBcJlDLrkCKHlNvRGDxFrCZXGJHmBdwfpqtGHSdMLStstpnlJBBmfsgRgjWBVdRKrRFSTNqTTZlpQxDQ"
-                target="_blank"><i class="fa-solid fa-envelope"></i></a></span>
-        <span class="whatsapp"><a href="https://wa.me/919728541543" target="_blank"><i
-                    class="fa-brands fa-whatsapp"></i></a></span>
-    </footer>
-    <script src="script.js"></script>
+    <!-- </div> -->
+
+    <script src="/script/script.js"></script>
     <script src="https://kit.fontawesome.com/5a2806fb6d.js" crossorigin="anonymous"></script>
 </body>
 
