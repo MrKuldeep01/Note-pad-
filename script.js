@@ -23,7 +23,7 @@ function newPagefun() {
   let textdiv = document.createElement("div");
   textdiv.classList = "textdiv";
   textdiv.innerHTML = `
-  <textarea name="Note-Pad" id="textArea" placeholder="| Text here to add things or click to continue"
+  <textarea name="Note-Pad" id="textArea" autofocus placeholder="| Text here to add things or click to continue"
     class="lightTheme textArea" spellcheck="true" autocomplete="language" autocorrect="true"></textarea>
   <div class="newpagebtn">
        <button class="cancelBtn buttons" id="cancelBtn">-</button>
@@ -40,8 +40,9 @@ function newPagefun() {
   function hidetextdiv() {
     textdiv.style.display = "none";
     itemsBox.style.opacity = "1";
-  addBtn.style.visibility = "visible";
 
+    addBtn.style.visibility = "visible";
+    window.location.reload(true);
   }
   let savebtn = document.getElementById("saveBtn");
   savebtn.addEventListener("click", savefun);
@@ -54,7 +55,7 @@ function newPagefun() {
 
     saveCard.innerHTML = ` 
            
-        <input type="text" id="localkey" placeholder="file name">
+        <input type="text" autofocus id="localkey" placeholder="file name">
         <div class="savepagebtn">
             <button id="submitbtn">SAVE</button>
             <button id="exitbtn">CLOSE</button>
@@ -68,6 +69,7 @@ function newPagefun() {
     function hideSaveCard() {
       saveCard.style.display = "none";
       itemsBox.style.opacity = "1";
+      window.location.reload(true);
     }
     function submitfun() {
       let localkey = document.getElementById("localkey").value;
@@ -83,7 +85,6 @@ function newPagefun() {
       hideSaveCard();
     }
     submitbtn.addEventListener("click", hideSaveCard);
-    
   }
 }
 
@@ -117,23 +118,28 @@ function storedItems() {
 
       const editButton = itemContainer.querySelector("#editBtn");
       editButton.addEventListener("click", () => {
+        itemsBox.style.opacity = ".2";
+        let addBtn = document.getElementById("addBtn");
+        addBtn.style.visibility = "hidden";
+        allDeleteBtn.style.visibility = "hidden";
+        document.getElementById("deleteBtn").style.visibility = "hidden";
+        editButton.style.visibility = "hidden";
         const editData = localStorage.getItem(key);
         console.log(editData);
+
         let textdiv = document.createElement("div");
         textdiv.classList = "textdiv";
         textdiv.innerHTML = `
-        <textarea name="Note-Pad" id="textArea" placeholder="| Text here to add things or click to continue"
+        <textarea name="Note-Pad" autofocus id="textArea" placeholder="| Text here to add things or click to continue"
           class="lightTheme textArea" spellcheck="true" autocomplete="language" autocorrect="true">${editData}</textarea>
         <div class="newpagebtn">
-             <button class="cancelBtn buttons" id="cancelBtn">-</button>
+             
              <button class="saveBtn buttons" id="saveBtn">✔</button>
         </div>
       `;
         document.body.appendChild(textdiv);
         textdiv.style.display = "flex";
         let textBox = document.getElementById("textArea");
-        let cancelbtn = document.querySelector(".cancelBtn");
-        cancelbtn.addEventListener("click", hidetextdiv);
         function hidetextdiv() {
           cancelbtn.style.visibility = "hidden";
           savebtn.style.visibility = "hidden";
@@ -151,7 +157,7 @@ function storedItems() {
 
           saveCard.innerHTML = ` 
                   <!--<label for="userFile">To save data</label> -->
-              <input type="text" id="localkey" placeholder="file name">
+              <input type="text" autofocus id="localkey" placeholder="file name">
               <div class="savepagebtn">
                   <button id="submitbtn">SAVE</button>
                   <button id="exitbtn">CLOSE</button>
@@ -163,7 +169,9 @@ function storedItems() {
           exitbtn.addEventListener("click", hideSaveCard);
 
           function hideSaveCard() {
+            window.location.reload(true);
             saveCard.style.display = "none";
+            itemsBox.style.opacity = "1";
           }
           function submitfun() {
             let localkey = document.getElementById("localkey").value;
