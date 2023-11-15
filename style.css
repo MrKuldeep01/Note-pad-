@@ -109,39 +109,6 @@ a {
   color: white;
   font-size: 1.5rem;
 }
-.emptybox{
-  padding: 15px;
-  height: auto;
-  width: auto;
-  background: rgba(137, 43, 226, 0.378);
-  border-radius: 10px;
-  border:none;
-  
-  /* position: absolute;
-  top:40%;
-  left: 35%; */
-}
-/* -----------------new create page------------ */
-.textdiv{
-  height:calc(100vh - 40px);
-  width: 100vw;
-  position:fixed;
-  top:0;
-  left: 0;
-  display:none;
-  background: rgb(82, 207, 211,0.2);
-  align-items: center;
-  justify-content: center;
-}
-
-.newpagebtn{
-  position: fixed;
-  bottom: 50px;
-  right:20px;
-}
-.newpagebtn button{
-  margin-left: 10px;
-}
 
 .textArea {
   width: 95%;
@@ -221,21 +188,7 @@ a {
   background: royalblue;
   /* position:relative; */
 }
-.cancelBtn,.addBtn,.deleteBtn,.refreshBtn{
-  font-size: 22px;
-}
 
-#addBtn{
-  position:absolute;
-  bottom: 50px;
-  left:20px;
-}
-.refreshBtn:hover,.refreshBtn:active{
-  scale:1.2;
-  font-size: 1.5rem;
-  
-
-}
 /* -------------------SAVE PAGE----------------------- */
 /* .savepage{
   height: 100vh;
