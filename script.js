@@ -23,15 +23,15 @@ function newPagefun() {
   let textdiv = document.createElement("div");
   textdiv.classList = "textdiv";
   textdiv.innerHTML = `
-  <textarea name="Note-Pad" id="textArea" autofocus placeholder="| Text here to add things or click to continue"
+  <textarea name="Note-Pad" id="textArea" placeholder="| Text here to add things or click to continue"
     class="lightTheme textArea" spellcheck="true" autocomplete="language" autocorrect="true"></textarea>
   <div class="newpagebtn">
-       <button class="cancelBtn buttons" id="cancelBtn">-</button>
-       <button class="saveBtn buttons" id="saveBtn">✔</button>
+       <button class="cancelBtn buttons" id="cancelBtn"><i class="ri-arrow-left-double-line"></i></button>
+       <button class="saveBtn buttons" id="saveBtn"><i class="ri-save-2-line"></i></button>
   </div>
 `;
   document.body.appendChild(textdiv);
-  itemsBox.style.opacity = ".2";
+  itemsBox.style.opacity = ".1";
 
   textdiv.style.display = "flex";
   let textBox = document.getElementById("textArea");
@@ -40,9 +40,7 @@ function newPagefun() {
   function hidetextdiv() {
     textdiv.style.display = "none";
     itemsBox.style.opacity = "1";
-
     addBtn.style.visibility = "visible";
-    window.location.reload(true);
   }
   let savebtn = document.getElementById("saveBtn");
   savebtn.addEventListener("click", savefun);
@@ -55,7 +53,7 @@ function newPagefun() {
 
     saveCard.innerHTML = ` 
            
-        <input type="text" autofocus id="localkey" placeholder="file name">
+        <input type="text" id="localkey" placeholder="file name">
         <div class="savepagebtn">
             <button id="submitbtn">SAVE</button>
             <button id="exitbtn">CLOSE</button>
@@ -76,15 +74,16 @@ function newPagefun() {
       // let localkey = prompt("To save data ", " file name");
       localStorage.setItem(localkey, localContent);
       alert("data saved with the name : " + localkey);
-      console.log(
-        localStorage.getItem(localkey),
-        ": data is saved with id : " + localkey
-      );
+      // console.log(
+      //   localStorage.getItem(localkey),
+      //   ": data is saved with id : " + localkey
+      // );
       localkey = "";
       localContent = "";
       hideSaveCard();
     }
     submitbtn.addEventListener("click", hideSaveCard);
+    storedItems();
   }
 }
 
@@ -103,8 +102,8 @@ function storedItems() {
           <h3 class="itemname">${key}</h3>
         </div>
         <div class="right">
-          <button class="editBtn editdeletebtn" id="editBtn">🖊</button>
-          <button class="deleteBtn editdeletebtn" id="deleteBtn">X</button>
+          <button class="editBtn editdeletebtn" id="editBtn"><i class="ri-edit-2-line"></i></button>
+          <button class="deleteBtn editdeletebtn" id="deleteBtn"><i class="ri-close-circle-line"></i></button>
         </div>`;
 
       itemsBox.appendChild(itemContainer);
@@ -114,35 +113,33 @@ function storedItems() {
       deleteButton.addEventListener("click", () => {
         localStorage.removeItem(key);
         itemContainer.remove();
+        window.location.reload(true);
       });
 
       const editButton = itemContainer.querySelector("#editBtn");
       editButton.addEventListener("click", () => {
-        itemsBox.style.opacity = ".2";
-        let addBtn = document.getElementById("addBtn");
-        addBtn.style.visibility = "hidden";
-        allDeleteBtn.style.visibility = "hidden";
-        document.getElementById("deleteBtn").style.visibility = "hidden";
-        editButton.style.visibility = "hidden";
         const editData = localStorage.getItem(key);
-        console.log(editData);
-
         let textdiv = document.createElement("div");
         textdiv.classList = "textdiv";
         textdiv.innerHTML = `
-        <textarea name="Note-Pad" autofocus id="textArea" placeholder="| Text here to add things or click to continue"
+        <textarea name="Note-Pad" id="textArea" placeholder="| Text here to add things or click to continue"
           class="lightTheme textArea" spellcheck="true" autocomplete="language" autocorrect="true">${editData}</textarea>
         <div class="newpagebtn">
-             
+             <button class="cancelBtn buttons" id="cancelBtn">-</button>
              <button class="saveBtn buttons" id="saveBtn">✔</button>
         </div>
       `;
         document.body.appendChild(textdiv);
+        addBtn.style.visibility = "hidden";
+        itemsBox.style.opacity = ".1";
         textdiv.style.display = "flex";
         let textBox = document.getElementById("textArea");
+        let cancelbtn = document.querySelector(".cancelBtn");
+        cancelbtn.addEventListener("click", hidetextdiv);
         function hidetextdiv() {
           cancelbtn.style.visibility = "hidden";
           savebtn.style.visibility = "hidden";
+          itemsBox.style.opacity = "1";
           textdiv.style.display = "none";
         }
         let savebtn = document.querySelector(".saveBtn");
@@ -157,7 +154,7 @@ function storedItems() {
 
           saveCard.innerHTML = ` 
                   <!--<label for="userFile">To save data</label> -->
-              <input type="text" autofocus id="localkey" placeholder="file name">
+              <input type="text" id="localkey" placeholder="file name">
               <div class="savepagebtn">
                   <button id="submitbtn">SAVE</button>
                   <button id="exitbtn">CLOSE</button>
@@ -169,9 +166,8 @@ function storedItems() {
           exitbtn.addEventListener("click", hideSaveCard);
 
           function hideSaveCard() {
-            window.location.reload(true);
             saveCard.style.display = "none";
-            itemsBox.style.opacity = "1";
+            window.location.reload(true);
           }
           function submitfun() {
             let localkey = document.getElementById("localkey").value;
@@ -197,15 +193,22 @@ function storedItems() {
     // Create a "Delete all" button
     let allDeleteBtn = document.createElement("button");
     allDeleteBtn.classList = "alldeletebtn button";
-    allDeleteBtn.innerText = "Delete all";
+    allDeleteBtn.innerHTML = `<i class="ri-delete-bin-5-line"></i>`;
     allDeleteBtn.style.display = "static";
+    allDeleteBtn.style.fontSize = "1.3rem";
+    allDeleteBtn.style.borderRadius = "30%";
+    allDeleteBtn.style.boxShadow = "0px 1px 5px black";
+
+
     itemsBox.appendChild(allDeleteBtn);
 
     allDeleteBtn.addEventListener("click", () => {
       localStorage.clear();
-      itemsBox.innerHTML = ""; // Clear all items from the display
+      itemsBox.innerHTML = "";
+      window.location.reload(true); // Clear all items from the display
     });
   } else {
+    console.log("else work");
     // If localStorage is empty, show a message
     // allDeleteBtn.style.display="none";
     let emptyBox = document.createElement("div");
