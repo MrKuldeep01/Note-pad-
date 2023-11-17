@@ -141,6 +141,7 @@ function storedItems() {
           savebtn.style.visibility = "hidden";
           itemsBox.style.opacity = "1";
           textdiv.style.display = "none";
+          addBtn.style.visibility="visible"
         }
         let savebtn = document.querySelector(".saveBtn");
         savebtn.addEventListener("click", savefun);
