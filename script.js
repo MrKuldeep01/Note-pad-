@@ -4,7 +4,9 @@ let themeBtn = document.getElementById("themeToggle");
 let newpage = document.querySelector(".newpage");
 
 // console.log(cancelbtn);
-
+function refresh() {
+  window.location.reload();
+}
 let localStoreItems = [];
 
 // ------------------- theme function---------------
@@ -81,6 +83,7 @@ function newPagefun() {
       localkey = "";
       localContent = "";
       hideSaveCard();
+      refresh();
     }
     submitbtn.addEventListener("click", hideSaveCard);
     storedItems();
@@ -102,8 +105,8 @@ function storedItems() {
           <h3 class="itemname">${key}</h3>
         </div>
         <div class="right">
-          <button class="editBtn editdeletebtn" id="editBtn"><i class="ri-edit-2-line"></i></button>
-          <button class="deleteBtn editdeletebtn" id="deleteBtn"><i class="ri-close-circle-line"></i></button>
+          <button class="editBtn editdeletebtn" title="Edit file" id="editBtn"><i class="ri-edit-2-line"></i></button>
+          <button class="deleteBtn editdeletebtn" title="Delete file" id="deleteBtn"><i class="ri-close-circle-line"></i></button>
         </div>`;
 
       itemsBox.appendChild(itemContainer);
@@ -113,7 +116,7 @@ function storedItems() {
       deleteButton.addEventListener("click", () => {
         localStorage.removeItem(key);
         itemContainer.remove();
-        window.location.reload(true);
+        refresh();
       });
 
       const editButton = itemContainer.querySelector("#editBtn");
@@ -137,17 +140,17 @@ function storedItems() {
         let cancelbtn = document.querySelector(".cancelBtn");
         cancelbtn.addEventListener("click", hidetextdiv);
         function hidetextdiv() {
-          cancelbtn.style.visibility = "hidden";
+          cancelbtn.style.display = "hidden";
           savebtn.style.visibility = "hidden";
           itemsBox.style.opacity = "1";
           textdiv.style.display = "none";
-          addBtn.style.visibility="visible"
+          addBtn.style.visibility = "visible";
+          refresh();
         }
         let savebtn = document.querySelector(".saveBtn");
         savebtn.addEventListener("click", savefun);
         function savefun() {
           textdiv.style.display = "none";
-
           let localContent = textBox.value;
           let saveCard = document.createElement("div");
           saveCard.classList = "savefield";
@@ -168,7 +171,7 @@ function storedItems() {
 
           function hideSaveCard() {
             saveCard.style.display = "none";
-            window.location.reload(true);
+            refresh();
           }
           function submitfun() {
             let localkey = document.getElementById("localkey").value;
@@ -194,12 +197,12 @@ function storedItems() {
     // Create a "Delete all" button
     let allDeleteBtn = document.createElement("button");
     allDeleteBtn.classList = "alldeletebtn button";
+    allDeleteBtn.setAttribute("title","Delete all items");
     allDeleteBtn.innerHTML = `<i class="ri-delete-bin-5-line"></i>`;
     allDeleteBtn.style.display = "static";
     allDeleteBtn.style.fontSize = "1.3rem";
     allDeleteBtn.style.borderRadius = "30%";
     allDeleteBtn.style.boxShadow = "0px 1px 5px black";
-
 
     itemsBox.appendChild(allDeleteBtn);
 
