@@ -31,9 +31,8 @@ button {
   border-radius: 2px;
   z-index: 5;
 }
-button:active {
-  box-shadow: -1px -1px 2px black;
-  box-shadow: none;
+button:active,button:hover,button:focus{
+  box-shadow: 0px 0px 4px black;
   scale: 0.97;
 }
 a {
@@ -212,13 +211,15 @@ a {
 .editBtn,
 .deleteBtn {
   height: 30px;
+  width: 30px;
   /* font-family: monospace; */
   color: rgba(255, 255, 255, 0.822);
-  padding: 8px 15px;
-  border-radius: 3px;
+  padding: 8px ;
+  margin: .2rem;
+  border-radius: 50%;
   border: none;
   background: rgba(0, 0, 0, 0.808);
-  box-shadow: 2px 1px rgb(255, 255, 255);
+  box-shadow: 0px 0px 2px rgb(255, 255, 255,.3);
   /* position:relative; */
 }
 .cancelBtn,
@@ -229,8 +230,11 @@ a {
 
 #addBtn {
   position: fixed;
-  bottom: 30px;
-  left: 20px;
+  bottom: 2%;
+  left: 2%;
+  /* font-size: 1.5rem; */
+  scale: 1.5;
+  box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.392);
 }
 
 /* -------------------SAVE PAGE----------------------- */
@@ -291,10 +295,13 @@ a {
 }
 .alldeletebtn {
   position: fixed;
-  top: 50px;
-  right: 15px;
+  top: 10%;
+  right: 2%;
   font-size: 1.2rem;
-  padding: 5px 10px;
+  height: 30px;
+  width: 30px;
+  padding: .4rem .8rem;
+  border-radius: 50%;
   background: rgba(0, 0, 0, 0.842);
   color: rgba(255, 255, 255, 0.815);
 }
